@@ -11,9 +11,13 @@
 		89D4C7042A721ECA00FC8A60 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7032A721ECA00FC8A60 /* ContentView.swift */; };
 		89D4C7062A721ECC00FC8A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D4C7052A721ECC00FC8A60 /* Assets.xcassets */; };
 		89D4C70A2A721ECC00FC8A60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D4C7092A721ECC00FC8A60 /* Preview Assets.xcassets */; };
-		89D4C7142A721ECD00FC8A60 /* NetworkTestingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7132A721ECD00FC8A60 /* NetworkTestingAppTests.swift */; };
 		89D4C71E2A721ECD00FC8A60 /* NetworkTestingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C71D2A721ECD00FC8A60 /* NetworkTestingAppUITests.swift */; };
 		89D4C7202A721ECD00FC8A60 /* NetworkTestingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C71F2A721ECD00FC8A60 /* NetworkTestingAppUITestsLaunchTests.swift */; };
+		89D4C72E2A7220F500FC8A60 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C72D2A7220F500FC8A60 /* HttpClient.swift */; };
+		89D4C7312A7226EF00FC8A60 /* HttpClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7302A7226EF00FC8A60 /* HttpClientTest.swift */; };
+		89D4C7332A722A7300FC8A60 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7322A722A7300FC8A60 /* ApiError.swift */; };
+		89D4C7352A722A9500FC8A60 /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7342A722A9500FC8A60 /* URLSessionType.swift */; };
+		89D4C7372A722BC800FC8A60 /* URLSessionDataTaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7362A722BC700FC8A60 /* URLSessionDataTaskType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +45,14 @@
 		89D4C7072A721ECC00FC8A60 /* NetworkTestingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkTestingApp.entitlements; sourceTree = "<group>"; };
 		89D4C7092A721ECC00FC8A60 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		89D4C70F2A721ECD00FC8A60 /* NetworkTestingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTestingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		89D4C7132A721ECD00FC8A60 /* NetworkTestingAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestingAppTests.swift; sourceTree = "<group>"; };
 		89D4C7192A721ECD00FC8A60 /* NetworkTestingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkTestingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D4C71D2A721ECD00FC8A60 /* NetworkTestingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestingAppUITests.swift; sourceTree = "<group>"; };
 		89D4C71F2A721ECD00FC8A60 /* NetworkTestingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		89D4C72D2A7220F500FC8A60 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		89D4C7302A7226EF00FC8A60 /* HttpClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientTest.swift; sourceTree = "<group>"; };
+		89D4C7322A722A7300FC8A60 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		89D4C7342A722A9500FC8A60 /* URLSessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
+		89D4C7362A722BC700FC8A60 /* URLSessionDataTaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +124,7 @@
 		89D4C7122A721ECD00FC8A60 /* NetworkTestingAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				89D4C7132A721ECD00FC8A60 /* NetworkTestingAppTests.swift */,
+				89D4C72F2A7226DD00FC8A60 /* Core */,
 			);
 			path = NetworkTestingAppTests;
 			sourceTree = "<group>";
@@ -133,6 +141,18 @@
 		89D4C72C2A721F0800FC8A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				89D4C7322A722A7300FC8A60 /* ApiError.swift */,
+				89D4C72D2A7220F500FC8A60 /* HttpClient.swift */,
+				89D4C7362A722BC700FC8A60 /* URLSessionDataTaskType.swift */,
+				89D4C7342A722A9500FC8A60 /* URLSessionType.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		89D4C72F2A7226DD00FC8A60 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				89D4C7302A7226EF00FC8A60 /* HttpClientTest.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -208,6 +228,7 @@
 					};
 					89D4C70E2A721ECD00FC8A60 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 						TestTargetID = 89D4C6FD2A721ECA00FC8A60;
 					};
 					89D4C7182A721ECD00FC8A60 = {
@@ -268,7 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				89D4C7042A721ECA00FC8A60 /* ContentView.swift in Sources */,
+				89D4C7332A722A7300FC8A60 /* ApiError.swift in Sources */,
+				89D4C72E2A7220F500FC8A60 /* HttpClient.swift in Sources */,
+				89D4C7352A722A9500FC8A60 /* URLSessionType.swift in Sources */,
 				89D4C7022A721ECA00FC8A60 /* NetworkTestingAppApp.swift in Sources */,
+				89D4C7372A722BC800FC8A60 /* URLSessionDataTaskType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89D4C7142A721ECD00FC8A60 /* NetworkTestingAppTests.swift in Sources */,
+				89D4C7312A7226EF00FC8A60 /* HttpClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +516,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -502,6 +528,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetworkTestingApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NetworkTestingApp";
@@ -513,6 +540,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
