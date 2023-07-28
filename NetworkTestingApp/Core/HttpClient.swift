@@ -1,13 +1,21 @@
 import Foundation
 
-final class HttpClient<T: Decodable> {
+protocol HttpClientType {
+    associatedtype T
     typealias Completion = (Result<T, ApiError>) -> Void
+    
+    func get(_ urlString: String, completion: @escaping Completion)
+}
+
+final class HttpClient<T: Decodable> {
     private let session: URLSessionType
     
     init(session: URLSessionType = URLSession.shared) {
         self.session = session
     }
-    
+}
+
+extension HttpClient: HttpClientType {
     func get(_ urlString: String, completion: @escaping Completion) {
         guard let url = URL(string: urlString) else {
             return completion(.failure(.invalidURL))
