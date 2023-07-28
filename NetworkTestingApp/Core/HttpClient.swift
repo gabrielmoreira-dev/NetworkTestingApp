@@ -8,6 +8,7 @@ protocol HttpClientType<T> {
 }
 
 final class HttpClient<T: Decodable> {
+    typealias Completion = (Result<T, ApiError>) -> Void
     private let session: URLSessionType
     
     init(session: URLSessionType = URLSession.shared) {
