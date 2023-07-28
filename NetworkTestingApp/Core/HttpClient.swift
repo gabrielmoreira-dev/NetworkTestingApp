@@ -1,7 +1,7 @@
 import Foundation
 
-protocol HttpClientType {
-    associatedtype T
+protocol HttpClientType<T> {
+    associatedtype T: Decodable
     typealias Completion = (Result<T, ApiError>) -> Void
     
     func get(_ urlString: String, completion: @escaping Completion)

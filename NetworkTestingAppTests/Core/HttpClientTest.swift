@@ -33,7 +33,7 @@ final class HttpClientTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .invalidURL)
     }
     
@@ -49,7 +49,7 @@ final class HttpClientTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .serverError)
     }
     
@@ -64,7 +64,7 @@ final class HttpClientTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .emptyData)
     }
     
@@ -80,7 +80,7 @@ final class HttpClientTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation])
+        wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .decodeError)
     }
 }
