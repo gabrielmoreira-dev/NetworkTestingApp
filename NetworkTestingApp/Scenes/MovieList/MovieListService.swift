@@ -5,9 +5,9 @@ protocol MovieListServiceType {
 }
 
 final class MovieListService {
-    private let httpClient: any HttpClientType<[Movie]>
+    private let httpClient: HttpClientType
     
-    init(httpClient: some HttpClientType<[Movie]>) {
+    init(httpClient: HttpClientType = HttpClient()) {
         self.httpClient = httpClient
     }
 }

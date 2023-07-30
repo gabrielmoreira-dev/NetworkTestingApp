@@ -4,7 +4,7 @@ import XCTest
 final class MovieListServiceTest: XCTestCase {
     private let httpClient = HttpClientSpy()
     private lazy var sut = MovieListService(httpClient: httpClient)
-    private let movieList: [Movie] = [Movie(title: "A title", imageURL: "http://example.com")]
+    private let movieList: [Movie] = [Movie(id: 0, title: "A title", imageURL: "http://example.com")]
     
     func test_whenFetchMovieListCalled_shouldPassCorrectURL() {
         sut.fetchMovieList { _ in }
@@ -28,11 +28,11 @@ final class MovieListServiceTest: XCTestCase {
 }
 
 private final class HttpClientSpy: HttpClientType {
-    typealias T = [Movie]
     private(set) var receivedURLs: [String] = []
     var result: Result<[Movie], ApiError> = .failure(.serverError)
     
-    func get(_ urlString: String, completion: @escaping Completion) {
+    func get<T: Decodable>(_ urlString: String, completion: @escaping Completion<T>) {
+        guard let result = result as? Result<T, ApiError> else { return }
         receivedURLs.append(urlString)
         completion(result)
     }

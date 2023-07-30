@@ -1,14 +1,12 @@
 import Foundation
 
-protocol HttpClientType<T> {
-    associatedtype T: Decodable
-    typealias Completion = (Result<T, ApiError>) -> Void
+protocol HttpClientType {
+    typealias Completion<T: Decodable> = (Result<T, ApiError>) -> Void
     
-    func get(_ urlString: String, completion: @escaping Completion)
+    func get<T>(_ urlString: String, completion: @escaping Completion<T>)
 }
 
-final class HttpClient<T: Decodable> {
-    typealias Completion = (Result<T, ApiError>) -> Void
+final class HttpClient {
     private let session: URLSessionType
     
     init(session: URLSessionType = URLSession.shared) {
@@ -17,7 +15,7 @@ final class HttpClient<T: Decodable> {
 }
 
 extension HttpClient: HttpClientType {
-    func get(_ urlString: String, completion: @escaping Completion) {
+    func get<T>(_ urlString: String, completion: @escaping Completion<T>) {
         guard let url = URL(string: urlString) else {
             return completion(.failure(.invalidURL))
         }
@@ -28,7 +26,7 @@ extension HttpClient: HttpClientType {
 }
 
 private extension HttpClient {
-    func performRequest(_ request: URLRequest, completion: @escaping Completion) {
+    func performRequest<T>(_ request: URLRequest, completion: @escaping Completion<T>) {
         session.dataTask(with: request) { (data, response, error) in
             if let _ = error {
                 return completion(.failure(.serverError))
@@ -41,7 +39,7 @@ private extension HttpClient {
         }.resume()
     }
     
-    func decode(data: Data, completion: @escaping Completion) {
+    func decode<T>(data: Data, completion: @escaping Completion<T>) {
         let decoded = try? JSONDecoder().decode(T.self, from: data)
         if let decoded = decoded {
             return completion(.success(decoded))

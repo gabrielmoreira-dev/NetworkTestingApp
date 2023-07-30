@@ -2,12 +2,13 @@
 import XCTest
 
 final class HttpClientTest: XCTestCase {
+    typealias Completion = (Result<[Movie], ApiError>) -> Void
     private let urlString = "http://example.com"
     private let session = URLSessionSpy()
-    private lazy var sut = HttpClient<String>(session: session)
+    private lazy var sut = HttpClient(session: session)
     
     func test_whenGetRequest_shouldCatchURL() {
-        sut.get(urlString) { _ in }
+        sut.get(urlString, completion: { _ in } as Completion)
         
         XCTAssertEqual(session.receivedURLs.first?.absoluteString, urlString)
     }
@@ -16,7 +17,7 @@ final class HttpClientTest: XCTestCase {
         let dataTask = URLSessionDataTaskSpy()
         session.nextDataTask = dataTask
         
-        sut.get(urlString) { _ in }
+        sut.get(urlString, completion: { _ in } as Completion)
         
         XCTAssertEqual(dataTask.resumeCount, 1)
     }
@@ -25,13 +26,14 @@ final class HttpClientTest: XCTestCase {
         let expectation = XCTestExpectation()
         let invalidURL = String()
         var error: ApiError?
-        
-        sut.get(invalidURL) { result in
+        let completion: Completion = { result in
             if case let .failure(value) = result {
                 error = value
             }
             expectation.fulfill()
         }
+        
+        sut.get(invalidURL, completion: completion)
         
         wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .invalidURL)
@@ -41,13 +43,14 @@ final class HttpClientTest: XCTestCase {
         let expectation = XCTestExpectation()
         var error: ApiError?
         session.error = NSError()
-        
-        sut.get(urlString) { result in
+        let completion: Completion = { result in
             if case let .failure(value) = result {
                 error = value
             }
             expectation.fulfill()
         }
+        
+        sut.get(urlString, completion: completion)
         
         wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .serverError)
@@ -56,13 +59,14 @@ final class HttpClientTest: XCTestCase {
     func test_whenGetRequestWithEmptyData_shouldReturnError() {
         let expectation = XCTestExpectation()
         var error: ApiError?
-        
-        sut.get(urlString) { result in
+        let completion: Completion = { result in
             if case let .failure(value) = result {
                 error = value
             }
             expectation.fulfill()
         }
+        
+        sut.get(urlString, completion: completion)
         
         wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .emptyData)
@@ -72,13 +76,14 @@ final class HttpClientTest: XCTestCase {
         let expectation = XCTestExpectation()
         var error: ApiError?
         session.data = Data()
-        
-        sut.get(urlString) { result in
+        let completion: Completion = { result in
             if case let .failure(value) = result {
                 error = value
             }
             expectation.fulfill()
         }
+        
+        sut.get(urlString, completion: completion)
         
         wait(for: [expectation], timeout: 0.5)
         XCTAssertEqual(error, .decodeError)
