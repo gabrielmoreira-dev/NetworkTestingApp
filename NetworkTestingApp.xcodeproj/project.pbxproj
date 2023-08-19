@@ -11,6 +11,7 @@
 		895D03F12A734EEF00D50747 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D03F02A734EEF00D50747 /* Movie.swift */; };
 		895D03F32A7350AD00D50747 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D03F22A7350AD00D50747 /* MovieListViewModel.swift */; };
 		895D03F72A73541C00D50747 /* MovieListServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895D03F62A73541C00D50747 /* MovieListServiceTest.swift */; };
+		89733E3A2A914CCF0038AAC9 /* DispatchQueueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89733E392A914CCF0038AAC9 /* DispatchQueueType.swift */; };
 		89D4C7022A721ECA00FC8A60 /* NetworkTestingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C7012A721ECA00FC8A60 /* NetworkTestingAppApp.swift */; };
 		89D4C7062A721ECC00FC8A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D4C7052A721ECC00FC8A60 /* Assets.xcassets */; };
 		89D4C70A2A721ECC00FC8A60 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89D4C7092A721ECC00FC8A60 /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		895D03F02A734EEF00D50747 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		895D03F22A7350AD00D50747 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		895D03F62A73541C00D50747 /* MovieListServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListServiceTest.swift; sourceTree = "<group>"; };
+		89733E392A914CCF0038AAC9 /* DispatchQueueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueType.swift; sourceTree = "<group>"; };
 		89D4C6FE2A721ECA00FC8A60 /* NetworkTestingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkTestingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D4C7012A721ECA00FC8A60 /* NetworkTestingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestingAppApp.swift; sourceTree = "<group>"; };
 		89D4C7052A721ECC00FC8A60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +128,33 @@
 			path = MovieList;
 			sourceTree = "<group>";
 		};
+		89733E362A914C350038AAC9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				89D4C7322A722A7300FC8A60 /* ApiError.swift */,
+				89D4C72D2A7220F500FC8A60 /* HttpClient.swift */,
+				89D4C7362A722BC700FC8A60 /* URLSessionDataTaskType.swift */,
+				89D4C7342A722A9500FC8A60 /* URLSessionType.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		89733E372A914C4B0038AAC9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				89D4C7302A7226EF00FC8A60 /* HttpClientTest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		89733E382A914C630038AAC9 /* Dispatching */ = {
+			isa = PBXGroup;
+			children = (
+				89733E392A914CCF0038AAC9 /* DispatchQueueType.swift */,
+			);
+			path = Dispatching;
+			sourceTree = "<group>";
+		};
 		89D4C6F52A721ECA00FC8A60 = {
 			isa = PBXGroup;
 			children = (
@@ -188,10 +217,8 @@
 		89D4C72C2A721F0800FC8A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				89D4C7322A722A7300FC8A60 /* ApiError.swift */,
-				89D4C72D2A7220F500FC8A60 /* HttpClient.swift */,
-				89D4C7362A722BC700FC8A60 /* URLSessionDataTaskType.swift */,
-				89D4C7342A722A9500FC8A60 /* URLSessionType.swift */,
+				89733E382A914C630038AAC9 /* Dispatching */,
+				89733E362A914C350038AAC9 /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -199,7 +226,7 @@
 		89D4C72F2A7226DD00FC8A60 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				89D4C7302A7226EF00FC8A60 /* HttpClientTest.swift */,
+				89733E372A914C4B0038AAC9 /* Networking */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -341,6 +368,7 @@
 				89D4C7022A721ECA00FC8A60 /* NetworkTestingAppApp.swift in Sources */,
 				895D03EF2A734B9C00D50747 /* MovieListService.swift in Sources */,
 				895D03F12A734EEF00D50747 /* Movie.swift in Sources */,
+				89733E3A2A914CCF0038AAC9 /* DispatchQueueType.swift in Sources */,
 				89F737F82A74818900F9068D /* MovieListFactory.swift in Sources */,
 				89F737F62A747F7900F9068D /* MovieListView.swift in Sources */,
 				89D4C7372A722BC800FC8A60 /* URLSessionDataTaskType.swift in Sources */,

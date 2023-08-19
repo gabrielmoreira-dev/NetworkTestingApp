@@ -16,6 +16,4 @@ struct MovieListView: View {
     init(viewModel: MovieListViewModel) {
         self.viewModel = viewModel
     }
-    
-    
 }

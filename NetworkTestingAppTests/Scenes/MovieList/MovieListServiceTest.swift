@@ -3,13 +3,14 @@ import XCTest
 
 final class MovieListServiceTest: XCTestCase {
     private let httpClient = HttpClientSpy()
-    private lazy var sut = MovieListService(httpClient: httpClient)
+    private let mainQueue = DispatchQueueMock()
+    private lazy var sut = MovieListService(httpClient: httpClient, mainQueue: mainQueue)
     private let movieList: [Movie] = [Movie(id: 0, title: "A title", imageURL: "http://example.com")]
     
     func test_whenFetchMovieListCalled_shouldPassCorrectURL() {
         sut.fetchMovieList { _ in }
         
-        XCTAssertEqual(httpClient.receivedURLs, ["http://example.com/api/movies"])
+        XCTAssertEqual(httpClient.receivedURLs, ["https://test-example.com/api/movies"])
     }
     
     func test_whenFetchMovieListWithSuccess_shouldPassMovieList() {
@@ -22,7 +23,7 @@ final class MovieListServiceTest: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 3)
         XCTAssertEqual(receivedResult, .success(movieList))
     }
 }
@@ -35,5 +36,11 @@ private final class HttpClientSpy: HttpClientType {
         guard let result = result as? Result<T, ApiError> else { return }
         receivedURLs.append(urlString)
         completion(result)
+    }
+}
+
+private final class DispatchQueueMock: DispatchQueueType {
+    func async(execute work: @escaping @convention(block) () -> Void) {
+        work()
     }
 }

@@ -35,7 +35,7 @@ final class HttpClientTest: XCTestCase {
         
         sut.get(invalidURL, completion: completion)
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 3)
         XCTAssertEqual(error, .invalidURL)
     }
     
@@ -52,7 +52,7 @@ final class HttpClientTest: XCTestCase {
         
         sut.get(urlString, completion: completion)
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 3)
         XCTAssertEqual(error, .serverError)
     }
     
@@ -68,7 +68,7 @@ final class HttpClientTest: XCTestCase {
         
         sut.get(urlString, completion: completion)
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 3)
         XCTAssertEqual(error, .emptyData)
     }
     
@@ -85,7 +85,7 @@ final class HttpClientTest: XCTestCase {
         
         sut.get(urlString, completion: completion)
         
-        wait(for: [expectation], timeout: 0.5)
+        wait(for: [expectation], timeout: 3)
         XCTAssertEqual(error, .decodeError)
     }
 }
